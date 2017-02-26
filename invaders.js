@@ -203,7 +203,6 @@ class Enemy {
     constructor(image, x, y) {
         this.image = image;
         this.pos = {'x': x, 'y': y};
-        //this.canvas_width = canvas_width;
     }
 
     move() {
@@ -263,8 +262,6 @@ class EnemyManager {
     }
 
     draw(ctx) {
-        //this.moveDown();
-
         this.enemyList.forEach(
             (enemy) => enemy.draw(ctx)
         );
@@ -293,7 +290,6 @@ window.addEventListener("DOMContentLoaded", function () {
     const HEIGHT = canvas.height;
     const SPF = 1000 / 30;
     const PLAYER_SPEED = 5;
-    const ENEMY_SPEED = 3;
 
     let input = new Input();
     let player = new Player(input, WIDTH / 2, HEIGHT * 14 / 15, PLAYER_SPEED, WIDTH);
@@ -303,7 +299,7 @@ window.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keyup", (evt) => input.onKeyUp(evt));
 
     // EnemyManagerの準備
-    let manager = new EnemyManager(ENEMY_SPEED);
+    let manager = new EnemyManager();
     manager.generateEnemies();
 
     // メインループ
